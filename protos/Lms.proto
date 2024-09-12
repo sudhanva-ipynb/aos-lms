@@ -4,26 +4,16 @@ message LoginRequest {
   string username = 1;
   string password = 2;
 }
-message UploadCourseMaterialRequest{
-    string course = 1;
-    string term = 2;
-    string filename = 3;
-    bytes data = 4;
-    string created = 5;
-    }
-
-message UploadCourseMaterialResponse{
-    string error = 1;
-    string size = 2;
-    string code = 3;
-    }
 
 message LoginResponse{
     string error = 1;
     string token = 2;
+    string courses = 4;
     string code = 3;
 
 }
+
+
 
 
 service Auth{
@@ -31,6 +21,46 @@ service Auth{
    rpc facultyLogin(LoginRequest) returns (LoginResponse) {};
 }
 
+
+message UploadCourseMaterialRequest{
+    string course = 1;
+    string name = 6;
+    string term = 2;
+    string filename = 3;
+    bytes data = 4;
+    string created = 5;
+    }
+
+message GetCourseContentsRequest{
+    string course = 1;
+    string term = 2;
+    }
+
+message GetCourseContentsResponse{
+    string course = 1;
+    string term = 2;
+    string data = 3;
+    string error = 4;
+    }
+
+message UploadCourseMaterialResponse{
+    string error = 1;
+    string size = 2;
+    string code = 3;
+    }
+message GetCourseMaterialRequest{
+    string course = 1;
+    string name = 2;
+    string term = 3;
+}
+message GetCourseMaterialResponse{
+    string name = 6;
+    string filename = 3;
+    string data = 4;
+    string error = 5;
+}
 service Materials{
    rpc courseMaterialUpload(stream UploadCourseMaterialRequest) returns (UploadCourseMaterialResponse) {};
+   rpc getCourseContents(GetCourseContentsRequest) returns (GetCourseContentsResponse) {};
+   rpc getCourseMaterial(GetCourseMaterialRequest) returns (stream GetCourseMaterialResponse) {};
 }

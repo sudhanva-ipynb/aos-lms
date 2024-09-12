@@ -154,12 +154,34 @@ class MaterialsStub(object):
                 request_serializer=protos_dot_Lms__pb2.UploadCourseMaterialRequest.SerializeToString,
                 response_deserializer=protos_dot_Lms__pb2.UploadCourseMaterialResponse.FromString,
                 _registered_method=True)
+        self.getCourseContents = channel.unary_unary(
+                '/Materials/getCourseContents',
+                request_serializer=protos_dot_Lms__pb2.GetCourseContentsRequest.SerializeToString,
+                response_deserializer=protos_dot_Lms__pb2.GetCourseContentsResponse.FromString,
+                _registered_method=True)
+        self.getCourseMaterial = channel.unary_stream(
+                '/Materials/getCourseMaterial',
+                request_serializer=protos_dot_Lms__pb2.GetCourseMaterialRequest.SerializeToString,
+                response_deserializer=protos_dot_Lms__pb2.GetCourseMaterialResponse.FromString,
+                _registered_method=True)
 
 
 class MaterialsServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def courseMaterialUpload(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def getCourseContents(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def getCourseMaterial(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -172,6 +194,16 @@ def add_MaterialsServicer_to_server(servicer, server):
                     servicer.courseMaterialUpload,
                     request_deserializer=protos_dot_Lms__pb2.UploadCourseMaterialRequest.FromString,
                     response_serializer=protos_dot_Lms__pb2.UploadCourseMaterialResponse.SerializeToString,
+            ),
+            'getCourseContents': grpc.unary_unary_rpc_method_handler(
+                    servicer.getCourseContents,
+                    request_deserializer=protos_dot_Lms__pb2.GetCourseContentsRequest.FromString,
+                    response_serializer=protos_dot_Lms__pb2.GetCourseContentsResponse.SerializeToString,
+            ),
+            'getCourseMaterial': grpc.unary_stream_rpc_method_handler(
+                    servicer.getCourseMaterial,
+                    request_deserializer=protos_dot_Lms__pb2.GetCourseMaterialRequest.FromString,
+                    response_serializer=protos_dot_Lms__pb2.GetCourseMaterialResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -201,6 +233,60 @@ class Materials(object):
             '/Materials/courseMaterialUpload',
             protos_dot_Lms__pb2.UploadCourseMaterialRequest.SerializeToString,
             protos_dot_Lms__pb2.UploadCourseMaterialResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def getCourseContents(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/Materials/getCourseContents',
+            protos_dot_Lms__pb2.GetCourseContentsRequest.SerializeToString,
+            protos_dot_Lms__pb2.GetCourseContentsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def getCourseMaterial(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/Materials/getCourseMaterial',
+            protos_dot_Lms__pb2.GetCourseMaterialRequest.SerializeToString,
+            protos_dot_Lms__pb2.GetCourseMaterialResponse.FromString,
             options,
             channel_credentials,
             insecure,

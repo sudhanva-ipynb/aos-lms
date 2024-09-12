@@ -7,11 +7,11 @@ from Database.methods import *
 def generateExpiry():
     return (datetime.now() + timedelta(hours=2)).strftime("%Y%m%d%H%M%S")
 
-def login(email,password):
+def login(email,password,role):
 
-    isUserValid = validate_user(email,password)
+    isUserValid,courses,id = validate_user(email,password,role)
     if isUserValid:
-        token = sessionManager.encrypt(f"{email}|{password}|{generateExpiry()}")
-        return token
+        token = sessionManager.encrypt(f"{id}|{role}|{generateExpiry()}")
+        return token,",".join(courses),None
     else:
-        return
+        return None,None,"Invalid Credentials"
