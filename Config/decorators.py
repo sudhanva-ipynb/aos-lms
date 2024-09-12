@@ -21,7 +21,8 @@ def student_access_token_required(f):
                 except Exception as e:
                     context.abort(grpc.StatusCode.UNAUTHENTICATED, "Invalid Token")
 
-        return f(self, request_iterator, context,*args,**kwargs)
+                return f(self, request_iterator, context,*args,**kwargs)
+        context.abort(grpc.StatusCode.UNAUTHENTICATED, "Token is Missing")
     return decorator
 
 def faculty_access_token_required(f):
@@ -40,7 +41,8 @@ def faculty_access_token_required(f):
                 except Exception as e:
                     context.abort(grpc.StatusCode.UNAUTHENTICATED, "Invalid Token")
 
-        return f(self, request_iterator, context,*args,**kwargs)
+                return f(self, request_iterator, context,*args,**kwargs)
+        context.abort(grpc.StatusCode.UNAUTHENTICATED, "Token is Missing")
     return decorator
 
 def any_access_token_required(f):
@@ -57,5 +59,6 @@ def any_access_token_required(f):
                 except Exception as e:
                     context.abort(grpc.StatusCode.UNAUTHENTICATED, "Invalid Token")
 
-        return f(self, request_iterator, context,*args,**kwargs)
+                return f(self, request_iterator, context,*args,**kwargs)
+        context.abort(grpc.StatusCode.UNAUTHENTICATED, "Token is Missing")
     return decorator
