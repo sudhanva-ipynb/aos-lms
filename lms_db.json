@@ -3,8 +3,22 @@
   "_data":[
   {
     "email": "abc@gmail.com",
-    "studentId": "1",
+    "id": "1",
     "name": "Sudhanva",
+    "password": "8e65433f2523dde713d8642d42479589a8aed97f44abbcc8f5ae3af870066b84",
+    "courses": [
+      "AOS",
+      "SEM"
+    ]
+  }
+]},
+"Faculty": {
+  "_index":{"1": 0,"dbc@gmail.com": 0},
+  "_data":[
+  {
+    "email": "dbc@gmail.com",
+    "id": "1",
+    "name": "Eswar",
     "password": "8e65433f2523dde713d8642d42479589a8aed97f44abbcc8f5ae3af870066b84",
     "courses": [
       "AOS",

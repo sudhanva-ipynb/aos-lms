@@ -1,7 +1,7 @@
 from Importers.common_imports import *
 from Services.auth import *
 from Config.key_manager import sessionManager
-from  Materials.upload_course_material import *
+from  Materials.course_materials import *
 from Services.materials import MaterialsService
 
 # class Students(BaseModel):

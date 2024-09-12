@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10protos/Lms.proto\"2\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"l\n\x1bUploadCourseMaterialRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\x12\x0f\n\x07\x63reated\x18\x05 \x01(\t\"I\n\x1cUploadCourseMaterialResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\x0c\n\x04size\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\";\n\rLoginResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t2h\n\x04\x41uth\x12/\n\x0cstudentLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x12/\n\x0c\x66\x61\x63ultyLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x32\x64\n\tMaterials\x12W\n\x14\x63ourseMaterialUpload\x12\x1c.UploadCourseMaterialRequest\x1a\x1d.UploadCourseMaterialResponse\"\x00(\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10protos/Lms.proto\"2\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"L\n\rLoginResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x0f\n\x07\x63ourses\x18\x04 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\"z\n\x1bUploadCourseMaterialRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\x12\x0f\n\x07\x63reated\x18\x05 \x01(\t\"8\n\x18GetCourseContentsRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\"V\n\x19GetCourseContentsResponse\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12\r\n\x05\x65rror\x18\x04 \x01(\t\"I\n\x1cUploadCourseMaterialResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\x0c\n\x04size\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\"F\n\x18GetCourseMaterialRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x03 \x01(\t\"X\n\x19GetCourseMaterialResponse\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\x12\r\n\x05\x65rror\x18\x05 \x01(\t2h\n\x04\x41uth\x12/\n\x0cstudentLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x12/\n\x0c\x66\x61\x63ultyLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x32\x82\x02\n\tMaterials\x12W\n\x14\x63ourseMaterialUpload\x12\x1c.UploadCourseMaterialRequest\x1a\x1d.UploadCourseMaterialResponse\"\x00(\x01\x12L\n\x11getCourseContents\x12\x19.GetCourseContentsRequest\x1a\x1a.GetCourseContentsResponse\"\x00\x12N\n\x11getCourseMaterial\x12\x19.GetCourseMaterialRequest\x1a\x1a.GetCourseMaterialResponse\"\x00\x30\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,14 +33,22 @@ if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_LOGINREQUEST']._serialized_start=20
   _globals['_LOGINREQUEST']._serialized_end=70
-  _globals['_UPLOADCOURSEMATERIALREQUEST']._serialized_start=72
-  _globals['_UPLOADCOURSEMATERIALREQUEST']._serialized_end=180
-  _globals['_UPLOADCOURSEMATERIALRESPONSE']._serialized_start=182
-  _globals['_UPLOADCOURSEMATERIALRESPONSE']._serialized_end=255
-  _globals['_LOGINRESPONSE']._serialized_start=257
-  _globals['_LOGINRESPONSE']._serialized_end=316
-  _globals['_AUTH']._serialized_start=318
-  _globals['_AUTH']._serialized_end=422
-  _globals['_MATERIALS']._serialized_start=424
-  _globals['_MATERIALS']._serialized_end=524
+  _globals['_LOGINRESPONSE']._serialized_start=72
+  _globals['_LOGINRESPONSE']._serialized_end=148
+  _globals['_UPLOADCOURSEMATERIALREQUEST']._serialized_start=150
+  _globals['_UPLOADCOURSEMATERIALREQUEST']._serialized_end=272
+  _globals['_GETCOURSECONTENTSREQUEST']._serialized_start=274
+  _globals['_GETCOURSECONTENTSREQUEST']._serialized_end=330
+  _globals['_GETCOURSECONTENTSRESPONSE']._serialized_start=332
+  _globals['_GETCOURSECONTENTSRESPONSE']._serialized_end=418
+  _globals['_UPLOADCOURSEMATERIALRESPONSE']._serialized_start=420
+  _globals['_UPLOADCOURSEMATERIALRESPONSE']._serialized_end=493
+  _globals['_GETCOURSEMATERIALREQUEST']._serialized_start=495
+  _globals['_GETCOURSEMATERIALREQUEST']._serialized_end=565
+  _globals['_GETCOURSEMATERIALRESPONSE']._serialized_start=567
+  _globals['_GETCOURSEMATERIALRESPONSE']._serialized_end=655
+  _globals['_AUTH']._serialized_start=657
+  _globals['_AUTH']._serialized_end=761
+  _globals['_MATERIALS']._serialized_start=764
+  _globals['_MATERIALS']._serialized_end=1022
 # @@protoc_insertion_point(module_scope)
