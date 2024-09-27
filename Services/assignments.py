@@ -29,13 +29,12 @@ class AssignmentsService(Lms_pb2_grpc.AssignmentsServicer):
             course = None
             filename = None
             assignment_name = None
-            student_id = None
+            student_id = kwargs["userid"]
             for request in request_iterator:
                 data += request.data
                 course = request.course
                 filename = request.filename
                 assignment_name = request.assignment_name
-                student_id = request.studentid
             if not data:
                 return Lms_pb2.SubmitAssignmentResponse(error="empty file", code="400")
             with sqlite3.connect("lms.db") as conn:

@@ -42,7 +42,7 @@ def add_material(conn,course_id,name,filename):
     try:
         query = """INSERT INTO materials(id,name,course_id,file_name,created_at) VALUES (?,?,?,?,CURRENT_TIMESTAMP)"""
         cursor = conn.cursor()
-        cursor.execute(query,(gen_uuid(),name,course_id,filename,filename,))
+        cursor.execute(query,(gen_uuid(),name,course_id,filename,))
 
     except Exception as e:
         print(e)
@@ -111,9 +111,9 @@ def insert_query(conn,query_text,posted_by,course_id):
     try:
         id = gen_uuid()
 
-        query = """INSERT INTO queries(id, query_text, posted_by,course_id, created_at,reply,reply_by) VALUES (?,?,?,?,CURRENT_TIMESTAMP,?,?)"""
+        query = """INSERT INTO queries(id, query_text, posted_by,course_id, created_at) VALUES (?,?,?,?,CURRENT_TIMESTAMP)"""
         cursor = conn.cursor()
-        cursor.execute(query,(id,query_text,posted_by,course_id,"yes you can","5056bc79-7c19-460a-ada9-c5807e98cca7",))
+        cursor.execute(query,(id,query_text,posted_by,course_id,))
         conn.commit()
     except Exception as error:
         print(error)
