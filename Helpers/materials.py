@@ -70,7 +70,7 @@ def get_course_contents(conn,course_name):
         return None,error
 
 
-def get_course_material(conn,id):
+def get_course_material(conn,course,id):
     io =BytesIO()
     try:
         material,error = get_material(conn,id)

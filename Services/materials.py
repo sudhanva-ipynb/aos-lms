@@ -54,8 +54,9 @@ class MaterialsService(Lms_pb2_grpc.MaterialsServicer):
     def getCourseMaterial(self, request, context,**kwargs):
         try:
             course = request.course
+            name = request.name
             with sqlite3.connect('lms.db') as conn:
-                data,name,filename,error = get_course_material(conn, course)
+                data,name,filename,error = get_course_material(conn, course,name)
             if error:
                 yield Lms_pb2.GetCourseMaterialResponse(error=error)
             else:
