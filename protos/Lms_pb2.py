@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10protos/Lms.proto\"2\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"L\n\rLoginResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x0f\n\x07\x63ourses\x18\x04 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\"z\n\x1bUploadCourseMaterialRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\x12\x0f\n\x07\x63reated\x18\x05 \x01(\t\"8\n\x18GetCourseContentsRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\"V\n\x19GetCourseContentsResponse\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12\r\n\x05\x65rror\x18\x04 \x01(\t\"I\n\x1cUploadCourseMaterialResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\x0c\n\x04size\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\"F\n\x18GetCourseMaterialRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x03 \x01(\t\"X\n\x19GetCourseMaterialResponse\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\t\x12\r\n\x05\x65rror\x18\x05 \x01(\t2h\n\x04\x41uth\x12/\n\x0cstudentLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x12/\n\x0c\x66\x61\x63ultyLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x32\x82\x02\n\tMaterials\x12W\n\x14\x63ourseMaterialUpload\x12\x1c.UploadCourseMaterialRequest\x1a\x1d.UploadCourseMaterialResponse\"\x00(\x01\x12L\n\x11getCourseContents\x12\x19.GetCourseContentsRequest\x1a\x1a.GetCourseContentsResponse\"\x00\x12N\n\x11getCourseMaterial\x12\x19.GetCourseMaterialRequest\x1a\x1a.GetCourseMaterialResponse\"\x00\x30\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10protos/Lms.proto\"2\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"L\n\rLoginResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x0f\n\x07\x63ourses\x18\x04 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\"z\n\x1bUploadCourseMaterialRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\x12\x0f\n\x07\x63reated\x18\x05 \x01(\t\"8\n\x18GetCourseContentsRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\"V\n\x19GetCourseContentsResponse\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04term\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12\r\n\x05\x65rror\x18\x04 \x01(\t\"I\n\x1cUploadCourseMaterialResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\x0c\n\x04size\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\"F\n\x18GetCourseMaterialRequest\x12\x0e\n\x06\x63ourse\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x03 \x01(\t\"X\n\x19GetCourseMaterialResponse\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\x10\n\x08\x66ilename\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\x12\r\n\x05\x65rror\x18\x05 \x01(\t\"u\n\x17SubmitAssignmentRequest\x12\x11\n\tstudentid\x18\x01 \x01(\t\x12\x0e\n\x06\x63ourse\x18\x02 \x01(\t\x12\x17\n\x0f\x61ssignment_name\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x04 \x01(\x0c\x12\x10\n\x08\x66ilename\x18\x05 \x01(\t\"7\n\x18SubmitAssignmentResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"I\n\x1eGetSubmittedAssignmentsRequest\x12\x0e\n\x06\x63ourse\x18\x02 \x01(\t\x12\x17\n\x0f\x61ssignment_name\x18\x03 \x01(\t\"L\n\x1fGetSubmittedAssignmentsResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\"E\n\x12\x43reateQueryRequest\x12\r\n\x05query\x18\x01 \x01(\t\x12\x0e\n\x06\x63ourse\x18\x02 \x01(\t\x12\x10\n\x08reply_to\x18\x03 \x01(\t\"2\n\x13\x43reateQueryResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\"1\n\x11GetQueriesRequest\x12\x0e\n\x06\x63ourse\x18\x02 \x01(\t\x12\x0c\n\x04term\x18\x01 \x01(\t\"B\n\x12GetQueriesResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\t\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12\x0f\n\x07queries\x18\x03 \x01(\t\"1\n\x12\x41nswerQueryRequest\x12\x0b\n\x03qid\x18\x01 \x01(\t\x12\x0e\n\x06\x61nswer\x18\x02 \x01(\t\"2\n\x13\x41nswerQueryResponse\x12\r\n\x05\x65rror\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t2h\n\x04\x41uth\x12/\n\x0cstudentLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x12/\n\x0c\x66\x61\x63ultyLogin\x12\r.LoginRequest\x1a\x0e.LoginResponse\"\x00\x32\x82\x02\n\tMaterials\x12W\n\x14\x63ourseMaterialUpload\x12\x1c.UploadCourseMaterialRequest\x1a\x1d.UploadCourseMaterialResponse\"\x00(\x01\x12L\n\x11getCourseContents\x12\x19.GetCourseContentsRequest\x1a\x1a.GetCourseContentsResponse\"\x00\x12N\n\x11getCourseMaterial\x12\x19.GetCourseMaterialRequest\x1a\x1a.GetCourseMaterialResponse\"\x00\x30\x01\x32\xbb\x01\n\x0b\x41ssignments\x12K\n\x10submitAssignment\x12\x18.SubmitAssignmentRequest\x1a\x19.SubmitAssignmentResponse\"\x00(\x01\x12_\n\x16getSubmittedAssignment\x12\x1f.GetSubmittedAssignmentsRequest\x1a .GetSubmittedAssignmentsResponse\"\x00\x30\x01\x32\xba\x01\n\x07Queries\x12:\n\x0b\x63reateQuery\x12\x13.CreateQueryRequest\x1a\x14.CreateQueryResponse\"\x00\x12\x37\n\ngetQueries\x12\x12.GetQueriesRequest\x1a\x13.GetQueriesResponse\"\x00\x12:\n\x0b\x61nswerQuery\x12\x13.AnswerQueryRequest\x1a\x14.AnswerQueryResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -47,8 +47,32 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_GETCOURSEMATERIALREQUEST']._serialized_end=565
   _globals['_GETCOURSEMATERIALRESPONSE']._serialized_start=567
   _globals['_GETCOURSEMATERIALRESPONSE']._serialized_end=655
-  _globals['_AUTH']._serialized_start=657
-  _globals['_AUTH']._serialized_end=761
-  _globals['_MATERIALS']._serialized_start=764
-  _globals['_MATERIALS']._serialized_end=1022
+  _globals['_SUBMITASSIGNMENTREQUEST']._serialized_start=657
+  _globals['_SUBMITASSIGNMENTREQUEST']._serialized_end=774
+  _globals['_SUBMITASSIGNMENTRESPONSE']._serialized_start=776
+  _globals['_SUBMITASSIGNMENTRESPONSE']._serialized_end=831
+  _globals['_GETSUBMITTEDASSIGNMENTSREQUEST']._serialized_start=833
+  _globals['_GETSUBMITTEDASSIGNMENTSREQUEST']._serialized_end=906
+  _globals['_GETSUBMITTEDASSIGNMENTSRESPONSE']._serialized_start=908
+  _globals['_GETSUBMITTEDASSIGNMENTSRESPONSE']._serialized_end=984
+  _globals['_CREATEQUERYREQUEST']._serialized_start=986
+  _globals['_CREATEQUERYREQUEST']._serialized_end=1055
+  _globals['_CREATEQUERYRESPONSE']._serialized_start=1057
+  _globals['_CREATEQUERYRESPONSE']._serialized_end=1107
+  _globals['_GETQUERIESREQUEST']._serialized_start=1109
+  _globals['_GETQUERIESREQUEST']._serialized_end=1158
+  _globals['_GETQUERIESRESPONSE']._serialized_start=1160
+  _globals['_GETQUERIESRESPONSE']._serialized_end=1226
+  _globals['_ANSWERQUERYREQUEST']._serialized_start=1228
+  _globals['_ANSWERQUERYREQUEST']._serialized_end=1277
+  _globals['_ANSWERQUERYRESPONSE']._serialized_start=1279
+  _globals['_ANSWERQUERYRESPONSE']._serialized_end=1329
+  _globals['_AUTH']._serialized_start=1331
+  _globals['_AUTH']._serialized_end=1435
+  _globals['_MATERIALS']._serialized_start=1438
+  _globals['_MATERIALS']._serialized_end=1696
+  _globals['_ASSIGNMENTS']._serialized_start=1699
+  _globals['_ASSIGNMENTS']._serialized_end=1886
+  _globals['_QUERIES']._serialized_start=1889
+  _globals['_QUERIES']._serialized_end=2075
 # @@protoc_insertion_point(module_scope)
