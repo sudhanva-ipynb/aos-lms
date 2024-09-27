@@ -296,3 +296,276 @@ class Materials(object):
             timeout,
             metadata,
             _registered_method=True)
+
+
+class AssignmentsStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.submitAssignment = channel.stream_unary(
+                '/Assignments/submitAssignment',
+                request_serializer=protos_dot_Lms__pb2.SubmitAssignmentRequest.SerializeToString,
+                response_deserializer=protos_dot_Lms__pb2.SubmitAssignmentResponse.FromString,
+                _registered_method=True)
+        self.getSubmittedAssignment = channel.unary_stream(
+                '/Assignments/getSubmittedAssignment',
+                request_serializer=protos_dot_Lms__pb2.GetSubmittedAssignmentsRequest.SerializeToString,
+                response_deserializer=protos_dot_Lms__pb2.GetSubmittedAssignmentsResponse.FromString,
+                _registered_method=True)
+
+
+class AssignmentsServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def submitAssignment(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def getSubmittedAssignment(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_AssignmentsServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'submitAssignment': grpc.stream_unary_rpc_method_handler(
+                    servicer.submitAssignment,
+                    request_deserializer=protos_dot_Lms__pb2.SubmitAssignmentRequest.FromString,
+                    response_serializer=protos_dot_Lms__pb2.SubmitAssignmentResponse.SerializeToString,
+            ),
+            'getSubmittedAssignment': grpc.unary_stream_rpc_method_handler(
+                    servicer.getSubmittedAssignment,
+                    request_deserializer=protos_dot_Lms__pb2.GetSubmittedAssignmentsRequest.FromString,
+                    response_serializer=protos_dot_Lms__pb2.GetSubmittedAssignmentsResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'Assignments', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('Assignments', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class Assignments(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def submitAssignment(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(
+            request_iterator,
+            target,
+            '/Assignments/submitAssignment',
+            protos_dot_Lms__pb2.SubmitAssignmentRequest.SerializeToString,
+            protos_dot_Lms__pb2.SubmitAssignmentResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def getSubmittedAssignment(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/Assignments/getSubmittedAssignment',
+            protos_dot_Lms__pb2.GetSubmittedAssignmentsRequest.SerializeToString,
+            protos_dot_Lms__pb2.GetSubmittedAssignmentsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+
+class QueriesStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.createQuery = channel.unary_unary(
+                '/Queries/createQuery',
+                request_serializer=protos_dot_Lms__pb2.CreateQueryRequest.SerializeToString,
+                response_deserializer=protos_dot_Lms__pb2.CreateQueryResponse.FromString,
+                _registered_method=True)
+        self.getQueries = channel.unary_unary(
+                '/Queries/getQueries',
+                request_serializer=protos_dot_Lms__pb2.GetQueriesRequest.SerializeToString,
+                response_deserializer=protos_dot_Lms__pb2.GetQueriesResponse.FromString,
+                _registered_method=True)
+        self.answerQuery = channel.unary_unary(
+                '/Queries/answerQuery',
+                request_serializer=protos_dot_Lms__pb2.AnswerQueryRequest.SerializeToString,
+                response_deserializer=protos_dot_Lms__pb2.AnswerQueryResponse.FromString,
+                _registered_method=True)
+
+
+class QueriesServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def createQuery(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def getQueries(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def answerQuery(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_QueriesServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'createQuery': grpc.unary_unary_rpc_method_handler(
+                    servicer.createQuery,
+                    request_deserializer=protos_dot_Lms__pb2.CreateQueryRequest.FromString,
+                    response_serializer=protos_dot_Lms__pb2.CreateQueryResponse.SerializeToString,
+            ),
+            'getQueries': grpc.unary_unary_rpc_method_handler(
+                    servicer.getQueries,
+                    request_deserializer=protos_dot_Lms__pb2.GetQueriesRequest.FromString,
+                    response_serializer=protos_dot_Lms__pb2.GetQueriesResponse.SerializeToString,
+            ),
+            'answerQuery': grpc.unary_unary_rpc_method_handler(
+                    servicer.answerQuery,
+                    request_deserializer=protos_dot_Lms__pb2.AnswerQueryRequest.FromString,
+                    response_serializer=protos_dot_Lms__pb2.AnswerQueryResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'Queries', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('Queries', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class Queries(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def createQuery(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/Queries/createQuery',
+            protos_dot_Lms__pb2.CreateQueryRequest.SerializeToString,
+            protos_dot_Lms__pb2.CreateQueryResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def getQueries(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/Queries/getQueries',
+            protos_dot_Lms__pb2.GetQueriesRequest.SerializeToString,
+            protos_dot_Lms__pb2.GetQueriesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def answerQuery(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/Queries/answerQuery',
+            protos_dot_Lms__pb2.AnswerQueryRequest.SerializeToString,
+            protos_dot_Lms__pb2.AnswerQueryResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
