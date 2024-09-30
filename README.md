@@ -12,19 +12,28 @@ The server for the grpc enabled system.
 ```shell
 python -m venv venv
 ```
+### Step 2: Activate the virtual environment
+```shell
+venv/Scripts/activate
+```
 
-### Step 2: Install all requirements
+### Step 3: Install all requirements
 ```shell
 pip install -r requirements.txt
 ```
     
-### Step 3: Generate grpc python code
+### Step 4: Generate grpc python code
 ```shell
 
 python -m grpc_tools.protoc -I.  --python_out=. --pyi_out=. --grpc_python_out=. ./protos/Lms.proto
 ```
+
+### Step 5: Download the model and save it under Models Directory
+```
+GDrive Link : https://drive.google.com/file/d/1ilCP4urzzLl5g0vHGtNcfT3KKJYhmF0P/view?usp=sharing
+```
     
-### Step 4: Run the source file
+### Step 5: Run the source file
 ```shell
 python main.py
 ```

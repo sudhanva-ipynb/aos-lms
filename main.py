@@ -3,9 +3,11 @@ from Helpers.assignments import create_assignment, submit_assignment
 from Importers.common_imports import *
 from Services.auth import *
 from Config.key_manager import sessionManager
+from Services.llm import LlmService
 from Services.materials import MaterialsService
 from Services.assignments import AssignmentsService
 from Services.queries import QueryService
+
 # class Students(BaseModel):
 #     emailId : str
 #     studentId : str
@@ -67,6 +69,7 @@ def serve():
     Lms_pb2_grpc.add_MaterialsServicer_to_server(MaterialsService(), server)
     Lms_pb2_grpc.add_AssignmentsServicer_to_server(AssignmentsService(), server)
     Lms_pb2_grpc.add_QueriesServicer_to_server(QueryService(), server)
+    Lms_pb2_grpc.add_LlmServicer_to_server(LlmService(), server)
     server.add_insecure_port("[::]:" + port)
     server.start()
     print("Server started, listening on " + port)
