@@ -8,3 +8,5 @@ pydantic_core==2.23.3
 python-dotenv==1.0.1
 setuptools==74.1.2
 typing_extensions==4.12.2
+--extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu124/
+llama-cpp-python==0.2.77

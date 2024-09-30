@@ -133,3 +133,17 @@ service Queries{
     rpc getQueries(GetQueriesRequest) returns (GetQueriesResponse){};
     rpc answerQuery(AnswerQueryRequest) returns (AnswerQueryResponse){};
 }
+
+message AskLlmRequest{
+    string query = 2;
+}
+
+message AskLlmResponse{
+    string error = 1;
+    string reply = 2;
+    string code = 3;
+}
+
+service Llm{
+    rpc askLlm(stream AskLlmRequest) returns (stream AskLlmResponse){};
+    }
