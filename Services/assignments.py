@@ -1,5 +1,7 @@
+import base64
 import sqlite3
 
+from Raft.node import node
 from Config.decorators import faculty_access_token_required,student_access_token_required
 from Importers.common_imports import *
 from protos import Lms_pb2,Lms_pb2_grpc
@@ -24,6 +26,7 @@ def generate_data(data):
 class AssignmentsService(Lms_pb2_grpc.AssignmentsServicer):
     @student_access_token_required
     def submitAssignment(self, request_iterator, context,**kwargs):
+        res = None
         try:
             data = b""
             course = None
@@ -38,14 +41,29 @@ class AssignmentsService(Lms_pb2_grpc.AssignmentsServicer):
             if not data:
                 return Lms_pb2.SubmitAssignmentResponse(error="empty file", code="400")
             with sqlite3.connect("lms.db") as conn:
-                error = submit_assignment(conn,student_id,course,assignment_name, data, filename)
-            if error:
-                return Lms_pb2.SubmitAssignmentResponse(error=f"{error}",code="400")
-            else:
-                return Lms_pb2.SubmitAssignmentResponse(error="",code="200")
+                op = "assignments.submit_assignment"
+                args = {
+                    "conn":"conn",
+                    "course":course,
+                    "assignment_name":assignment_name,
+                    "filename":filename,
+                    "data":base64.b64encode(data).decode("utf-8"),
+                    "student_id":student_id
+                }
+                res = node.leader_append_log(op,args)
+                if res:
+                    error = submit_assignment(conn,student_id,course,assignment_name, data, filename)
+                if error:
+                    return Lms_pb2.SubmitAssignmentResponse(error=f"{error}",code="400")
+                else:
+
+                    return Lms_pb2.SubmitAssignmentResponse(error="",code="200")
+
+
         except Exception as e:
             print(e)
             return Lms_pb2.SubmitAssignmentResponse(error=str(e),code="400")
+
 
     @faculty_access_token_required
     def getSubmittedAssignment(self, request, context,**kwargs):

@@ -2,7 +2,7 @@ from fileinput import filename
 
 from Importers.common_imports import *
 from protos import Lms_pb2,Lms_pb2_grpc
-
+from Raft.node import node
 from Helpers.materials import *
 from Config.decorators import faculty_access_token_required,any_access_token_required
 
@@ -31,8 +31,19 @@ class MaterialsService(Lms_pb2_grpc.MaterialsServicer):
                 name = request.name
             if req_count == 0:
                 return Lms_pb2.UploadCourseMaterialResponse(size="0", code="200")
-            with sqlite3.connect('lms.db') as conn:
-                result = upload(conn,course, data,filename,name)
+            with sqlite3.connect("lms.db") as conn:
+                op = "materials.material_upload"
+                args = {
+                    "conn": "conn",
+                    "course": course,
+                    "filename": filename,
+                    "data": data,
+                    "name": name
+                }
+
+                res = node.leader_append_log(op, args)
+                if res:
+                    result = upload(conn,course, data,filename,name)
             if result:
                 return Lms_pb2.UploadCourseMaterialResponse(error=f"{result}",code="400")
             else:

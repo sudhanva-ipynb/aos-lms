@@ -19,3 +19,9 @@ def get_queries(conn,course_id):
         return select_queries(conn,course_id)
     except Exception as e:
         return None,e
+
+
+query_map = {
+    "create_query": create_query,
+    "answer_query": answer_query
+}
