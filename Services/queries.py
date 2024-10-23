@@ -2,7 +2,7 @@ from Importers.common_imports import *
 from protos import Lms_pb2,Lms_pb2_grpc
 from Config.decorators import student_access_token_required,faculty_access_token_required,any_access_token_required
 from Helpers.queries import  *
-
+from Raft.node import node
 
 class QueryService(Lms_pb2_grpc.QueriesServicer):
     @student_access_token_required
@@ -11,7 +11,17 @@ class QueryService(Lms_pb2_grpc.QueriesServicer):
             course = request.course
             query = request.query
             with sqlite3.connect("lms.db") as conn:
-                error = create_query(conn,course,query,kwargs["userid"])
+                op = "queries.create_query"
+                args = {
+                    "conn": "conn",
+                    "course": course,
+                    "query": query,
+                    "user_id": kwargs["userid"],
+                }
+                # conn, queryid, answer, user_id
+                res = node.leader_append_log(op, args)
+                if res:
+                    error = create_query(conn,course,query,kwargs["userid"])
 
             if error:
                 return Lms_pb2.CreateQueryResponse(error=f"{error}",code="400")
@@ -39,6 +49,15 @@ class QueryService(Lms_pb2_grpc.QueriesServicer):
             ans = request.answer
             qid = request.qid
             with sqlite3.connect("lms.db") as conn:
+                op = "queries.answer_query"
+                args = {
+                    "conn": "conn",
+                    "queryid": qid,
+                    "answer": ans,
+                    "user_id": kwargs["userid"],
+                }
+
+                res = node.leader_append_log(op, args)
                 error = answer_query(conn,qid,ans,kwargs["userid"])
             if error:
                 return Lms_pb2.AnswerQueryResponse(error=f"{error}",code="400")

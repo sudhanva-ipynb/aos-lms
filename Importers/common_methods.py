@@ -1,5 +1,4 @@
-import hashlib
-import zipfile
+
 from Importers.common_imports import *
 
 def sha256_hash(obj):
@@ -8,6 +7,8 @@ def sha256_hash(obj):
 def getTimestamp():
     return datetime.now().strftime("%Y%m%d%H%M%S")
 
+def get_uuid():
+    return str(uuid.uuid4())
 
 def zip_files_in_directory(directory_path):
     # Create a BytesIO object to store the zip file in memory

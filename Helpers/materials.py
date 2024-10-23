@@ -89,3 +89,8 @@ def get_course_material(conn,course,id):
         print(error)
         return None,None,None,error
 
+
+
+materials_map = {
+    "upload_material":upload,
+}

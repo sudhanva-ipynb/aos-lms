@@ -1,3 +1,5 @@
+import base64
+
 from Importers.common_imports import *
 from Importers.common_methods import *
 from Database.methods import *
@@ -18,6 +20,8 @@ def map_dir_contents(folder_path):
 
 
 def add_file(path,filename,data):
+    if isinstance(data,str):
+        data = base64.b64decode(data.encode())
     try:
         if not os.path.exists(path):
             os.makedirs(path, exist_ok=True)
@@ -63,3 +67,9 @@ def get_all_assignments(course,assignment_name):
 
     except Exception as error:
         return None,error
+
+
+assignments_map = {
+    "submit_assignment":submit_assignment,
+    "create_assignment":create_assignment
+}
