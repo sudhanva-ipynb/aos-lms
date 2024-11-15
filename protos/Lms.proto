@@ -176,7 +176,20 @@ message AppendEntriesResponse{
     bool success = 2;
 }
 
+
+message GetLeaderRequest{
+    int32 ack = 1;
+}
+
+message GetLeaderResponse{
+
+    string node_id = 1;
+
+
+}
+
 service Raft{
     rpc requestVote(RequestVoteRequest) returns (RequestVoteResponse){};
     rpc appendEntries(AppendEntriesRequest) returns (AppendEntriesResponse){};
+    rpc getLeader(GetLeaderRequest) returns (GetLeaderResponse){};
 }
