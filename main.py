@@ -1,15 +1,14 @@
+from Config.secrets import settings
 from Database.creation_scripts import create_everything, create_assignment_submissions
 from Helpers.assignments import create_assignment, submit_assignment
 from Importers.common_imports import *
-from Raft.timer import timer
 from Services.auth import *
+from Raft.node import timer
 from Config.key_manager import sessionManager
-from Services.llm import LlmService
 from Services.materials import MaterialsService
 from Services.assignments import AssignmentsService
 from Services.queries import QueryService
 from Services.raft import RaftService
-
 # class Students(BaseModel):
 #     emailId : str
 #     studentId : str
@@ -61,24 +60,23 @@ from Services.raft import RaftService
 #         }
 #     ]
 
-# with open("README.md", "rb") as fh:
-#     data = fh.read()
-# upload("AOS",data,"20241","trial.md")
+
 def serve():
-    port = "50051"
+    port = settings.NODE_PORT
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=4))
     Lms_pb2_grpc.add_AuthServicer_to_server(AuthService(), server)
     Lms_pb2_grpc.add_MaterialsServicer_to_server(MaterialsService(), server)
     Lms_pb2_grpc.add_AssignmentsServicer_to_server(AssignmentsService(), server)
     Lms_pb2_grpc.add_QueriesServicer_to_server(QueryService(), server)
-    Lms_pb2_grpc.add_LlmServicer_to_server(LlmService(), server)
-    Lms_pb2_grpc.add_RaftServicer_to_server(RaftService(), server)
-    server.add_insecure_port("[::]:" + port)
+    # Lms_pb2_grpc.add_LlmServicer_to_server(LlmService(), server)
+    Lms_pb2_grpc.add_RaftServicer_to_server(RaftService(),server)
+    server.add_insecure_port("[::]:" + str(port))
     server.start()
-    print("Server started, listening on " + port)
+    print("Server started, listening on " + str(port))
+    timer.start()
     server.wait_for_termination()
 
 if __name__ == '__main__':
     create_everything()
-    timer.start()
     serve()
+

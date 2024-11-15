@@ -44,8 +44,8 @@ class AssignmentsService(Lms_pb2_grpc.AssignmentsServicer):
                 op = "assignments.submit_assignment"
                 args = {
                     "conn":"conn",
-                    "course":course,
-                    "assignment_name":assignment_name,
+                    "course_id":course,
+                    "assignment_id":assignment_name,
                     "filename":filename,
                     "data":base64.b64encode(data).decode("utf-8"),
                     "student_id":student_id
@@ -53,6 +53,8 @@ class AssignmentsService(Lms_pb2_grpc.AssignmentsServicer):
                 res = node.leader_append_log(op,args)
                 if res:
                     error = submit_assignment(conn,student_id,course,assignment_name, data, filename)
+                else:
+                    return Lms_pb2.UploadCourseMaterialResponse(error="Majority of nodes are down", code="500")
                 if error:
                     return Lms_pb2.SubmitAssignmentResponse(error=f"{error}",code="400")
                 else:

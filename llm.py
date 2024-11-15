@@ -1,6 +1,7 @@
+from Config.decorators import any_access_token_required
 from Importers.common_imports import *
+from protos import Lms_pb2,Lms_pb2_grpc
 from Importers.common_methods import *
-from Database.methods import *
 
 MODEL_PATH = "./Model/Phi-3-Context-Obedient-RAG-Q4_K_M.gguf"
 
@@ -57,3 +58,32 @@ class ModelPipeline:
 
 
 
+
+
+class LlmService(Lms_pb2_grpc.LlmServicer):
+    @any_access_token_required
+    def askLlm(self, request_iterator, context,**kwargs):
+        chat_pipeline = Chat()
+        for request in request_iterator:
+            yield Lms_pb2.AskLlmResponse(reply=chat_pipeline.add_message(request.query),code = "200")
+
+
+def Chat():
+    pipeline = ModelPipeline(model)
+
+    return pipeline
+
+def serve():
+    port = "50050"
+    _server = grpc.server(futures.ThreadPoolExecutor(max_workers=4))
+
+    Lms_pb2_grpc.add_LlmServicer_to_server(LlmService(), _server)
+    _server.add_insecure_port("[::]:" + port)
+    _server.start()
+    print("Server started, listening on " + port)
+    _server.wait_for_termination()
+
+if __name__ == '__main__':
+    model = Llama(model_path=MODEL_PATH, verbose=False, use_mlock=True, device="cuda")
+
+    serve()

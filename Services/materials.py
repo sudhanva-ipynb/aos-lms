@@ -35,7 +35,7 @@ class MaterialsService(Lms_pb2_grpc.MaterialsServicer):
                 op = "materials.material_upload"
                 args = {
                     "conn": "conn",
-                    "course": course,
+                    "course_id": course,
                     "filename": filename,
                     "data": data,
                     "name": name
@@ -44,6 +44,9 @@ class MaterialsService(Lms_pb2_grpc.MaterialsServicer):
                 res = node.leader_append_log(op, args)
                 if res:
                     result = upload(conn,course, data,filename,name)
+                else:
+                    return Lms_pb2.UploadCourseMaterialResponse(error="Majority of nodes are down", code="500")
+
             if result:
                 return Lms_pb2.UploadCourseMaterialResponse(error=f"{result}",code="400")
             else:

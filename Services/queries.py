@@ -22,6 +22,8 @@ class QueryService(Lms_pb2_grpc.QueriesServicer):
                 res = node.leader_append_log(op, args)
                 if res:
                     error = create_query(conn,course,query,kwargs["userid"])
+                else:
+                    return Lms_pb2.UploadCourseMaterialResponse(error="Majority of nodes are down", code="500")
 
             if error:
                 return Lms_pb2.CreateQueryResponse(error=f"{error}",code="400")
@@ -58,6 +60,8 @@ class QueryService(Lms_pb2_grpc.QueriesServicer):
                 }
 
                 res = node.leader_append_log(op, args)
+                if not res:
+                    return Lms_pb2.UploadCourseMaterialResponse(error="Majority of nodes are down", code="500")
                 error = answer_query(conn,qid,ans,kwargs["userid"])
             if error:
                 return Lms_pb2.AnswerQueryResponse(error=f"{error}",code="400")
